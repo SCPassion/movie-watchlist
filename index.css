@@ -12,6 +12,8 @@ html, body {
     width: 550px;
     height: 779px;
     margin: 0 auto;
+    position: relative;
+
 }
 
 header {
@@ -22,7 +24,6 @@ header {
     background-position: top 200px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    position: relative;
 }
 
 /* container */
@@ -32,8 +33,11 @@ header section {
     height: 208px;
 }
 
-.container {
+.flex {
     display: flex;
+}
+
+.container {
     padding: 0 2.625em;
 }
 
@@ -89,7 +93,8 @@ a:hover {
 }
 
 form {
+    justify-content: center;
     position: absolute;
     top: 200px;
-    left: 250px;
+    width: 100%;
 }
