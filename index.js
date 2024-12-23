@@ -18,6 +18,15 @@ searchForm.addEventListener("submit", async (e)=> {
 })
 
 function displaySearchResults( searchResultsArr) {
+
+    if(searchResultsArr) {
+        getMoviesHtml(searchResultsArr)
+    } else {
+        searchResults.innerHTML = `<h2>Unable to find what you’re looking for. Please try another search.</h2>`
+    }
+}
+
+function getMoviesHtml(searchResultsArr) {
     console.log(searchResultsArr)
 
 }
