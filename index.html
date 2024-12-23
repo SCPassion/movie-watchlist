@@ -8,20 +8,21 @@
     </head>
     <body>
         <header>
-            <section class="container flex">
+            <section class="container flex" id="header">
                 <h1 class="title">Find your film</h1>
                 <a href="index.html">My Watchlist</a>
             </section>
         </header>
 
-        <form class="flex">
-            <input type="text" placeholder="Blade Runner">
+        <form class="flex background" id="search-form">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Blade Runner" name="search-name">
             <button type="submit">Search</button>
         </form>
 
         <main>
-            <section class="container flex">
-                <div class="icon-container">
+            <section class="container flex" id="search-results">
+                <div class="icon-container flex">
                     <i class="fa-solid fa-film"></i>
                 </div>     
                 <h2>Start exploring</h2>

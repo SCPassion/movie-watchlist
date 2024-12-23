@@ -16,6 +16,8 @@ html, body {
 
 }
 
+/* header */
+
 header {
     /* opacity: 20%; */
     background-image: url("images/background.png");
@@ -26,20 +28,27 @@ header {
     border-top-right-radius: 20px;
 }
 
-/* container */
 header section {
-    justify-content: space-between;
-    align-items: center;
     height: 208px;
 }
 
+#header{
+    justify-content: space-between;
+}
+
+/* container */
+
 .flex {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
     padding: 0 2.625em;
 }
+
+/* main */
 
 main {
     background-color: black;
@@ -50,19 +59,15 @@ main {
 main section {
     height: 571px;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .icon-container {
     width: 70px;
     height: 61.25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
 }
 
-i {
+main i {
     font-size: 3.8rem;
 }
 
@@ -93,8 +98,41 @@ a:hover {
 }
 
 form {
-    justify-content: center;
     position: absolute;
-    top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 190px;
     width: 100%;
+    /* height: 38px; */
+}
+
+button {
+    font-size: 0.875rem;
+    padding: 8.5px 34px;
+    border: none;
+    background-color: #4B4B4b;
+    color: #FFFFFF;
+    border-radius: 0 6px 6px 0;
+
+}
+
+input {
+    padding: 9px 10px;
+    border: none;
+    color: #A5A5A5;
+}
+
+form i {
+    padding: 9.5px 15px;
+    border-radius: 6px 0 0 6px;
+}
+
+input, button{
+    font-family: "Inter", serif;
+
+}
+
+input, form i {
+    background-color: #2e2e2f;
 }
