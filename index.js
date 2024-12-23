@@ -1,6 +1,14 @@
 const omdbApiKey = "b2fbbe57"
 // const searchTerm = "batman"
 
+const pokemonDemo = { 
+    Title: "Pokémon: Detective Pikachu", 
+    Year: "2019", 
+    imdbID: "tt5884052", 
+    Type: "movie", 
+    Poster: "https://m.media-amazon.com/images/M/MV5BNDU4Mzc3NzE5NV5BMl5BanBnXkFtZTgwMzE1NzI1NzM@._V1_SX300.jpg" 
+}
+
 const searchForm = document.getElementById("search-form")
 const searchResults = document.getElementById("search-results")
 console.log(searchResults)
@@ -28,5 +36,4 @@ function displaySearchResults( searchResultsArr) {
 
 function getMoviesHtml(searchResultsArr) {
     console.log(searchResultsArr)
-
 }

@@ -84,6 +84,11 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    font-size: 1.125rem;
+    margin-bottom: 11px;
+}
+
 /* Anchor */
 a {
     text-decoration: none;
@@ -98,6 +103,7 @@ a:hover {
     text-decoration-color: #FFFFFF;
 }
 
+/* form element decloration */
 form {
     position: absolute;
     display: flex;
@@ -138,4 +144,53 @@ input, form i {
     background-color: #2e2e2f;
 }
 
+/* movie */
 
+.movie-item {
+    display: flex;
+    gap: 1.3125em;
+    width: 100%;
+}
+
+.poster-container {
+    width: 99px;
+    height: 147.41px;
+}
+
+.poster {
+    width: 100%;
+}
+
+
+.movie-description {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+
+.movie-title {
+    display: flex;
+    gap: 4px;
+}
+
+.movie-description p , .movie-description i{
+    font-size: 12px;
+    margin: 0;
+    display: inline;
+}
+
+.star {
+    color: #FEC654;
+}
+
+.movie-meta{
+    display: flex;
+    gap: 1.125em;
+    margin-bottom: 8px;
+}
+
+article {
+    font-size: 14px;
+    color: #a5a5a5;
+}
