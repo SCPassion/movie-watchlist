@@ -161,13 +161,11 @@ input, form i {
     width: 100%;
 }
 
-
 .movie-description {
     display: flex;
     flex-direction: column;
     width: 70%;
 }
-
 
 .movie-title {
     display: flex;
@@ -198,4 +196,8 @@ article {
 .divider {
     width: 100%;
     margin: 1.40625em 0 1.5625em 0;
+}
+
+.add-watchlist {
+    cursor: pointer;
 }
