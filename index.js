@@ -25,15 +25,50 @@ searchForm.addEventListener("submit", async (e)=> {
     }
 })
 
-function displaySearchResults( searchResultsArr) {
+async function displaySearchResults(searchResultsArr) {
 
     if(searchResultsArr) {
-        getMoviesHtml(searchResultsArr)
+        const html = await getMoviesHtml(searchResultsArr)
+        searchResults.innerHTML = html
     } else {
         searchResults.innerHTML = `<h2>Unable to find what you’re looking for. Please try another search.</h2>`
     }
 }
 
-function getMoviesHtml(searchResultsArr) {
-    console.log(searchResultsArr)
+async function getMoviesHtml(searchResultsArr) {
+    const searchResultsArray = searchResultsArr.slice(0, 3)
+    // console.log(searchResultsArr)
+    const searchResultPromises = searchResultsArray.map(async (movie)=> {
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${omdbApiKey}&i=${movie.imdbID}`)
+        const movieDetail = await res.json()
+
+        return `
+        <div class="movie-item">
+                    <div class="poster-container">
+                        <img src="${movieDetail.Poster}" alt="Movie poster" class="poster">
+                    </div>
+                    <div class="movie-description">
+                        <div class = "movie-title">
+                            <h3>${movieDetail.Title}<h3>
+                            <i class="fa-solid fa-star star"></i> 
+                            <p class="movie-rating">${movieDetail.imdbRating}</p>       
+                        </div>
+                        
+                        <div class="movie-meta">
+                            <p>${movieDetail.Runtime}</p>
+                            <p>${movieDetail.Genre}</p>
+                            <p class="add-watchlist"><i class="fa-solid fa-circle-plus"></i>  Watchlist</p>
+                        </div>
+
+                        <div class="movie-plot">
+                            <article>${movieDetail.Plot}</article>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">`
+    })
+
+    const searchResultHTML = await Promise.all(searchResultPromises)
+
+    return searchResultHTML.join("")
 }
