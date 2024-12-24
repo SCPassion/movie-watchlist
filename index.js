@@ -1,13 +1,4 @@
 const omdbApiKey = "b2fbbe57"
-// const searchTerm = "batman"
-
-const pokemonDemo = { 
-    Title: "Pokémon: Detective Pikachu", 
-    Year: "2019", 
-    imdbID: "tt5884052", 
-    Type: "movie", 
-    Poster: "https://m.media-amazon.com/images/M/MV5BNDU4Mzc3NzE5NV5BMl5BanBnXkFtZTgwMzE1NzI1NzM@._V1_SX300.jpg" 
-}
 
 const searchForm = document.getElementById("search-form")
 const searchResults = document.getElementById("search-results")
@@ -28,7 +19,7 @@ searchForm.addEventListener("submit", async (e)=> {
 async function displaySearchResults(searchResultsArr) {
 
     if(searchResultsArr) {
-        const html = await getMoviesHtml(searchResultsArr)
+        const html = await getSearchHtml(searchResultsArr)
         console.log(html)
         searchResults.innerHTML = html
     } else {
@@ -36,13 +27,21 @@ async function displaySearchResults(searchResultsArr) {
     }
 }
 
-async function getMoviesHtml(searchResultsArr) {
+async function getSearchHtml(searchResultsArr) {
     const searchResultsArray = searchResultsArr.slice(0, 10)
     const searchResultPromises = searchResultsArray.map(async (movie)=> {
         const res = await fetch(`https://www.omdbapi.com/?apikey=${omdbApiKey}&i=${movie.imdbID}`)
         const movieDetail = await res.json()
 
-        return `
+        return formHTML(movieDetail)
+    })
+
+    const searchResultHTML = await Promise.all(searchResultPromises)
+    return searchResultHTML.join("")
+}
+
+function formHTML(movieDetail) {
+    return `
         <div class="movie-item">
                     <div class="poster-container">
                         <img src="${movieDetail.Poster}" alt="Movie poster" class="poster">
@@ -66,8 +65,4 @@ async function getMoviesHtml(searchResultsArr) {
                     </div>
                 </div>
                 <hr class="divider">`
-    })
-
-    const searchResultHTML = await Promise.all(searchResultPromises)
-    return searchResultHTML.join("")
 }
