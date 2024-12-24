@@ -213,3 +213,23 @@ article {
 .add-watchlist {
     cursor: pointer;
 }
+
+.add-watchlist:hover {
+    color: orange;
+}
+
+.add-watchlist:active {
+    color: green;
+}
+
+.remove-watchlist {
+    cursor: pointer;
+}
+
+.remove-watchlist:hover {
+    color: orange;
+}
+
+.remove-watchlist:active {
+    color: red;
+}
