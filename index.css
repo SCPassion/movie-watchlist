@@ -56,7 +56,7 @@ header section {
 /* main */
 
 main {
-    background-color: black;
+    background-color: #121212;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -77,8 +77,9 @@ main section {
     padding-bottom: 50px;
 }
 
-main i {
+#file-logo {
     font-size: 3.8rem;
+    color: #787878;
 }
 
 /* typography */
@@ -94,6 +95,9 @@ h2 {
     text-align: center;
 }
 
+main h2 {
+    color: #787878;
+}
 h3 {
     font-size: 1.125rem;
     margin-bottom: 11px;
