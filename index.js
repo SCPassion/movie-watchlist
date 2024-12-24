@@ -11,7 +11,7 @@ const pokemonDemo = {
 
 const searchForm = document.getElementById("search-form")
 const searchResults = document.getElementById("search-results")
-console.log(searchResults)
+
 searchForm.addEventListener("submit", async (e)=> {
     e.preventDefault()
     const formData = new FormData(searchForm)
@@ -29,6 +29,7 @@ async function displaySearchResults(searchResultsArr) {
 
     if(searchResultsArr) {
         const html = await getMoviesHtml(searchResultsArr)
+        console.log(html)
         searchResults.innerHTML = html
     } else {
         searchResults.innerHTML = `<h2>Unable to find what you’re looking for. Please try another search.</h2>`
@@ -36,8 +37,7 @@ async function displaySearchResults(searchResultsArr) {
 }
 
 async function getMoviesHtml(searchResultsArr) {
-    const searchResultsArray = searchResultsArr.slice(0, 3)
-    // console.log(searchResultsArr)
+    const searchResultsArray = searchResultsArr.slice(0, 10)
     const searchResultPromises = searchResultsArray.map(async (movie)=> {
         const res = await fetch(`https://www.omdbapi.com/?apikey=${omdbApiKey}&i=${movie.imdbID}`)
         const movieDetail = await res.json()
@@ -57,7 +57,7 @@ async function getMoviesHtml(searchResultsArr) {
                         <div class="movie-meta">
                             <p>${movieDetail.Runtime}</p>
                             <p>${movieDetail.Genre}</p>
-                            <p class="add-watchlist"><i class="fa-solid fa-circle-plus"></i>  Watchlist</p>
+                            <p class="add-watchlist" data-movieid="${movieDetail.imdbID}"><i class="fa-solid fa-circle-plus"></i>  Watchlist</p>
                         </div>
 
                         <div class="movie-plot">
@@ -69,6 +69,5 @@ async function getMoviesHtml(searchResultsArr) {
     })
 
     const searchResultHTML = await Promise.all(searchResultPromises)
-
     return searchResultHTML.join("")
 }

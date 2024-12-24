@@ -26,6 +26,11 @@ header {
     background-position: top 200px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+
+    /* position: fixed; */
+    top: 0;
+    /* width: 100%; */
+    /* z-index: 1; */
 }
 
 header section {
@@ -57,14 +62,19 @@ main {
 }
 
 main section {
-    height: 571px;
+    /* height: 571px; */
     flex-direction: column;
 }
 
 .icon-container {
     width: 70px;
     height: 61.25px;
-    /* display: flex; */
+    margin-top: 211px;
+}
+
+#search-results {
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 main i {
@@ -80,13 +90,15 @@ h1 {
 }
 
 h2 {
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 15.6875rem 0;
     text-align: center;
 }
 
 h3 {
     font-size: 1.125rem;
     margin-bottom: 11px;
+    margin-top: 0;
+
 }
 
 /* Anchor */
