@@ -1,53 +1,30 @@
 const omdbApiKey = "b2fbbe57"
-
-const searchForm = document.getElementById("search-form")
-const searchResults = document.getElementById("search-results")
+const displayText = document.getElementById('display-text')
 const myMovieId = JSON.parse(localStorage.getItem("myMovieId"))
+const searchResults = document.getElementById("search-results")
 
-searchForm.addEventListener("submit", async (e)=> {
-    e.preventDefault()
-    const formData = new FormData(searchForm)
-    const searchTerm = formData.get("search-name")
-
-    if(searchTerm) {
-        const res = await fetch(`https://www.omdbapi.com/?apikey=${omdbApiKey}&s=${searchTerm}`)
-        const data = await res.json()
-        displaySearchResults(data.Search)
-        searchForm.reset() 
-    }
-})
-
-document.addEventListener("click",  (e)=> {
-    if(e.target.dataset.movieid) {
-        if(!myMovieId.includes(e.target.dataset.movieid)) {
-        myMovieId.push(e.target.dataset.movieid)
-        localStorage.setItem("myMovieId", JSON.stringify(myMovieId))
-        }
-    }
-})
-
-async function displaySearchResults(searchResultsArr) {
-
-    if(searchResultsArr) {
-        const html = await getSearchHtml(searchResultsArr)
+async function displaySearchResults() {
+    if(myMovieId) {
+        const html = await getSearchHtml()
         searchResults.innerHTML = html
     } else {
-        searchResults.innerHTML = `<h2>Unable to find what you’re looking for. Please try another search.</h2>`
+        displayText.innerHTML = `
+        <h2>There are no movies in your watchlist.</h2>
+    `
     }
 }
 
-async function getSearchHtml(searchResultsArr) {
-    const searchResultsArray = searchResultsArr.slice(0, 10)
-    const searchResultPromises = searchResultsArray.map(async (movie)=> {
-        const res = await fetch(`https://www.omdbapi.com/?apikey=${omdbApiKey}&i=${movie.imdbID}`)
+async function getSearchHtml() {
+    const searchResultPromises = myMovieId.map(async (id)=> {
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${omdbApiKey}&i=${id}`)
         const movieDetail = await res.json()
-
         return formHTML(movieDetail)
     })
 
     const searchResultHTML = await Promise.all(searchResultPromises)
     return searchResultHTML.join("")
 }
+
 
 function formHTML(movieDetail) {
     return `
@@ -75,3 +52,5 @@ function formHTML(movieDetail) {
                 </div>
                 <hr class="divider">`
 }
+
+displaySearchResults()
