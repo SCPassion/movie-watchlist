@@ -1,4 +1,4 @@
-const omdbApiKey = process.env.OMDB_API_KEY
+const omdbApiKey = import.meta.env.OMDB_API_KEY
 
 const searchForm = document.getElementById("search-form")
 const searchResults = document.getElementById("search-results")

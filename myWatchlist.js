@@ -1,4 +1,4 @@
-const omdbApiKey = process.env.OMDB_API_KEY
+const omdbApiKey = import.meta.env.OMDB_API_KEY
 
 const displayText = document.getElementById('display-text')
 let myMovieId = JSON.parse(localStorage.getItem("myMovieId"))
