@@ -1,6 +1,5 @@
-// import {formHTML} from "./htmlFunctions.js"
+const omdbApiKey = process.env.OMDB_API_KEY
 
-const omdbApiKey = "b2fbbe57"
 const searchForm = document.getElementById("search-form")
 const searchResults = document.getElementById("search-results")
 const myMovieId = JSON.parse(localStorage.getItem("myMovieId"))
